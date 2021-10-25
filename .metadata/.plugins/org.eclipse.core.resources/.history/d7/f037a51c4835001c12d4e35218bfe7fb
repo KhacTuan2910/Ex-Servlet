@@ -1,0 +1,35 @@
+package com.cybersoft.java14.bt01;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "login", urlPatterns = "/login")
+public class Login extends HttpServlet {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+//		resp.setCharacterEncoding("UTF-8");
+//		req.setCharacterEncoding("UTF-8");
+		
+		String loginForm = "<html lang=\"en\">\r\n"
+				+ "<body>\r\n"
+				+ "    <div style=\"display: flex; justify-content: center; align-items: center; flex-direction: column;\">\r\n"
+				+ "        <h3 style=\"color: aquamarine;\">Đăng nhập</h3>\r\n"
+				+ "        <form action=\"\" method=\"post\">\r\n"
+				+ "            <label>Username: </label>\r\n"
+				+ "            <input type=\"text\" name=\"username\">\r\n"
+				+ "            <br>\r\n"
+				+ "            <label style=\"margin-top: 12px;\">Password: </label>\r\n"
+				+ "            <input type=\"password\" name=\"pass\">\r\n"
+				+ "        </form>\r\n"
+				+ "    </div>\r\n"
+				+ "</body>\r\n"
+				+ "</html>";
+		resp.getWriter().append(loginForm);
+	}
+}
