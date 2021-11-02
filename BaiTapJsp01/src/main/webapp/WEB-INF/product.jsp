@@ -11,8 +11,22 @@
 <body>
 	<h1>Welcome</h1>
 	<%! ProductService productService = new ProductService();%>
-	
-	<input type="submit" value="Add product"></button>
+	<form action="/BaiTapJsp01/add" method="post">
+		<label>Name: </label>
+		<input type="text" name="productName">
+		<br>
+		<label>Description: </label>
+		<input type="text" name="description">
+		<br>
+		<label>Price: </label>
+		<input type="text" name="price">
+		<br>
+		<label>Quantity: </label>
+		<input type="text" name="quantity">
+		<br>
+		<input type="submit" value="Add product"></input>
+	</form>
+	<br>
 	<table>
 		<tr>
 			<th>Name	</th>
@@ -26,7 +40,7 @@
 			<td><%= product.getDescription() %>	</td>
 			<td><%= product.getPrice() %>	</td>
 			<td><%= product.getQuantity() %></td>
-			<td><input type="submit" value="Delete"></td>
+			<td><input type="submit" value="Delete" action="/"></td>
 		</tr>
 	<%}%>
 	</table>
