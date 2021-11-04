@@ -16,7 +16,11 @@
       <h1>Product Management</h1>
       
       <form action="/BaiTapJsp02/product/add" method="post" class="mt-5">
-          <label>Name</label>
+      	  <label>Id</label>
+          <br>
+          <input type="text" name="id">
+          <br>
+          <label class="mt-3">Name</label>
           <br>
           <input type="text" name="name">
           <br>
@@ -32,7 +36,7 @@
           <br>
           <input type="text" name="stock">
           <br>
-          <input type="submit" value="Add" class="btn btn-primary mt-4">
+          <input type="submit" value="Add" class="btn btn-primary btn-block mt-4">
       </form>
       
       <table class="table mt-5">
@@ -54,7 +58,7 @@
                   <td>${product.description}</td>
                   <td>$${product.price}</td>
                   <td>${product.stock}</td>
-                  <td>Remove</td>
+                  <td><a class="btn btn-danger btn-sm text-white" href="<%= request.getContextPath()%>/product/remove?id=${product.id}">Remove</a></td>
               </tr>
           	</c:forEach>
           </tbody>

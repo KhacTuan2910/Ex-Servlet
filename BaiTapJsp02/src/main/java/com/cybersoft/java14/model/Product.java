@@ -2,12 +2,17 @@ package com.cybersoft.java14.model;
 
 public class Product {
 	private String id;
-	private static int idAuto = 0;
 	private String name;
 	private String description;
 	private float price;
 	private int stock;
 	
+	
+	
+	public Product() {
+		
+	}
+
 	public Product(String id, String name, String description, float price, int stock) {
 		this.id = id;
 		this.name = name;
@@ -18,10 +23,6 @@ public class Product {
 
 	public String getId() {
 		return id;
-	}
-
-	public static int getIdAuto() {
-		return idAuto;
 	}
 
 	public String getName() {
@@ -38,6 +39,26 @@ public class Product {
 
 	public int getStock() {
 		return stock;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	

@@ -39,7 +39,9 @@ public class ProductServlet extends HttpServlet{
 			
 			break;
 		case "/product/remove":
-	
+			String deleteId = req.getParameter("id"); 
+			service.removeProduct(deleteId);
+			resp.sendRedirect(req.getContextPath() + "/product");
 			break;
 
 		default:
@@ -49,11 +51,12 @@ public class ProductServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
 		String name = req.getParameter("name");
 		String desc = req.getParameter("desc");
 		float price = Float.parseFloat(req.getParameter("price"));
 		int stock = Integer.parseInt(req.getParameter("stock"));
-		Product product = new Product("P2010", name, desc, price, stock);
+		Product product = new Product(id, name, desc, price, stock);
 		this.service.addProduct(product);
 		
 		resp.sendRedirect(req.getContextPath() + "/product");
