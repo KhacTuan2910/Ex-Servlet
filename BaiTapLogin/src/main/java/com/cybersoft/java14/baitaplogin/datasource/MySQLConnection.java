@@ -20,7 +20,7 @@ public class MySQLConnection {
 			System.out.println("Không thể kết nối với cơ sở dữ liệu.");
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			System.out.println("Không tìm thấy Driver MýQL Connect J.");
+			System.out.println("Không tìm thấy Driver MySQL Connect J.");
 			e.printStackTrace();
 		}
 		return null;

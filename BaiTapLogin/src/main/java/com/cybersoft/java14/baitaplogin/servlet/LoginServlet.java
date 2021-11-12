@@ -2,6 +2,7 @@ package com.cybersoft.java14.baitaplogin.servlet;
 
 import java.io.IOException;
 
+import com.cybersoft.java14.baitaplogin.service.LoginService;
 import com.cybersoft.java14.baitaplogin.utils.JspConst;
 import com.cybersoft.java14.baitaplogin.utils.UrlConst;
 
@@ -15,6 +16,14 @@ import jakarta.servlet.http.HttpServletResponse;
 		UrlConst.AUTH_LOGIN
 })
 public class LoginServlet extends HttpServlet{
+	private LoginService loginservice;
+	
+	@Override
+	public void init() throws ServletException {
+		loginservice = new LoginService();
+//		super.init();
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher(JspConst.AUTH_LOGIN)
@@ -23,10 +32,11 @@ public class LoginServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
-		if ("Tuanadmin".equals(username + password)) {
+		if (loginservice.hasAccount(username, password)) {
 			req.getSession().setAttribute("fullname", username);
 			req.getSession().setAttribute("isAuthenticated", true);
 			resp.sendRedirect(req.getContextPath() + UrlConst.HOME);

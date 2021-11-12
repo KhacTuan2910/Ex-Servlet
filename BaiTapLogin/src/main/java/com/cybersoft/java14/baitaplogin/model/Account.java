@@ -6,9 +6,14 @@ public class Account {
 	private String password;
 	private byte isAdmin;
 	
-	public Account(String username, String password) {
+	public Account() {
+	}
+	
+	public Account(int id, String username, String password, byte isAdmin) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.isAdmin = isAdmin;
 	}
 	
 	
