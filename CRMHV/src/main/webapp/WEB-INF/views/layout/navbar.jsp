@@ -1,3 +1,4 @@
+<%@page import="com.cybersoft.java14.crm.util.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -20,11 +21,11 @@
                                 Project
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href='<c:url value="<%=UrlConst.MANAGE_PROJECT %>"/>'>
                                     Manage Project
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    Project Create Project
+                                <a class="dropdown-item" href='<c:url value="<%=UrlConst.CREATE_PROJECT %>"/>'>
+                                    Create Project
                                 </a>
                             </div>
                         </li>
@@ -33,10 +34,10 @@
                                 User
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href='<c:url value="<%=UrlConst.USER_LIST %>"/>'>
                                     User List
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href='<c:url value="<%=UrlConst.CREATE_USER %>"/>'>
                                     Create User
                                 </a>
                             </div>

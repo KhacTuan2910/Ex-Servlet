@@ -4,9 +4,9 @@
 
     <!-- Header -->
 
-        <div id="header" class="mdk-header bg-dark js-mdk-header m-0" data-fixed data-effects="waterfall">
+        <div id="header" class="mdk-header bg-light js-mdk-header m-0" data-fixed data-effects="waterfall">
             <div class="mdk-header__content">
-                <div class="navbar navbar-expand-sm navbar-main navbar-dark bg-dark pr-0" id="navbar" data-primary>
+                <div class="navbar navbar-expand-sm navbar-main navbar-light bg-light pr-0" id="navbar" data-primary>
                     <div class="container">
                         <!-- Navbar toggler -->
 

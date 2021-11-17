@@ -25,5 +25,6 @@
 			<!-- // END Header Layout Content -->
    		</div>
 		<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
+		<dec:getProperty property="page.scripts" />
 	</body>
 </html>
