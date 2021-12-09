@@ -1,7 +1,12 @@
 package cybersoft.javabackend.java14.hibernatejpa.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +31,24 @@ public class AppController {
 	
 	public AppController(AppService service) {
 		this.service = service;
+	}
+	
+	@GetMapping("/{app-id}")
+	public ResponseEntity<App> findById(@PathVariable("app-id") String appId) {
+		Optional<App> appOpt = Optional.ofNullable(service.findById(appId));
+		
+		if (appOpt.isPresent()) {
+			return new ResponseEntity<App>(appOpt.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<App>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<App>> findAllApp() {
+		List<App> apps = service.findAll();
+		
+		return new ResponseEntity<List<App>>(apps, HttpStatus.OK);
 	}
 	
 	@PostMapping
