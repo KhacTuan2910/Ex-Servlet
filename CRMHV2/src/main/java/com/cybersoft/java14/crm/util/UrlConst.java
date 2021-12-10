@@ -6,7 +6,7 @@ public class UrlConst {
 	
 	/* User page*/
 	public static final String USER = "/user";
-	public static final String CREATE_USER = "/create-user";
+	public static final String USER_ADD = "/user-add";
 	
 	/* Project page*/
 	public static final String MANAGE_PROJECT = "/manage-project";

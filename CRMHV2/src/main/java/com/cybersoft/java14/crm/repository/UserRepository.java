@@ -13,11 +13,12 @@ import com.cybersoft.java14.crm.entity.User;
 public class UserRepository {
 	private List<User> users;
 	
-	public UserRepository() {
-		users = new ArrayList<>();
-	}
+//	public UserRepository() {
+//		users = new ArrayList<>();
+//	}
 	
 	public List<User> getAll() {
+		users = new ArrayList<>();
 		String query = "select u.id, u.name, u.email, u.password, u.phone, u.address, r.name  \r\n"
 				+ "from crm_app.crm_user u, crm_role r\r\n"
 				+ "where u.role = r.id;";
@@ -41,5 +42,53 @@ public class UserRepository {
 			e.printStackTrace();
 		}
 		return users;
+	}
+	
+	public int insert(User us) {
+		String query = "insert crm_user(name, email, password, phone, address, role)\r\n"
+				+ "values \r\n"
+				+ "	(?, ?, ?, ?, ?, ?)";
+		int roleId = getIdRole(us.getRole());
+		
+		if (getIdRole(us.getRole()) == 0)
+			return 0;
+		
+		try (Connection conn = MySQLConnection.getConnection()) {
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, us.getName());
+			statement.setString(2, us.getEmail());
+			statement.setString(3, us.getPassword());
+			statement.setString(4, us.getPhone());
+			statement.setString(5, us.getAddress());
+			statement.setInt(6, roleId);
+			
+			return statement.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Error insert user.");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	private int getIdRole(String role) {
+		String query = "select id\r\n"
+				+ "from crm_app.crm_role\r\n"
+				+ "where\r\n"
+				+ "	name = ?;";
+		try (Connection conn = MySQLConnection.getConnection()) {
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.setString(1, role);
+			ResultSet rs = statement.executeQuery();
+			
+			while (rs.next()) {
+				return rs.getInt("id");					
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error get role id.");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 }

@@ -1,3 +1,4 @@
+<%@page import="com.cybersoft.java14.crm.util.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -10,7 +11,7 @@
                         <h4 class="page-title">Danh sách thành viên</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12 text-right">
-                        <a href="user-add.html" class="btn btn-sm btn-success">Thêm mới</a>
+                        <a href='<c:url value="<%= UrlConst.USER_ADD %>" />' class="btn btn-sm btn-success">Thêm mới</a>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -46,6 +47,7 @@
 	                                            </td>
 	                                        </tr>
                                     	</c:forEach>
+                                    	<% i = 0; %>
                                     </tbody>
                                 </table>
                             </div>

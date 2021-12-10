@@ -1,15 +1,17 @@
+<%@page import="com.cybersoft.java14.crm.util.UrlConst"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Left navbar-header -->
 <div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             <li style="padding: 10px 0 0;">
-                <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
+                <a href='<c:url value="<%= UrlConst.HOME %>" />' class="waves-effect"><i class="fa fa-clock-o fa-fw"
                         aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li>
-                <a href="user-table.html" class="waves-effect"><i class="fa fa-user fa-fw"
+                <a href='<c:url value="<%= UrlConst.USER %>" />' class="waves-effect"><i class="fa fa-user fa-fw"
                         aria-hidden="true"></i><span class="hide-menu">Thành viên</span></a>
             </li>
             <li>

@@ -5,7 +5,7 @@ public class JspConst {
 	
 	/* User page*/
 	public static final String USER = "/WEB-INF/views/user/user-dashboard.jsp";
-	public static final String CREATE_USER = "/WEB-INF/views/user/createUser.jsp";
+	public static final String USER_ADD = "/WEB-INF/views/user/user-add.jsp";
 	
 	/* Project page*/
 	public static final String MANAGE_PROJECT = "/WEB-INF/views/project/manageProject.jsp";

@@ -14,7 +14,7 @@ import com.cybersoft.java14.crm.util.UrlConst;
 
 @WebServlet(name = "userServlet", urlPatterns = {
 		UrlConst.USER,
-		UrlConst.CREATE_USER
+		UrlConst.USER_ADD
 })
 public class UserServlet extends HttpServlet {
 	private UserService service;
@@ -29,6 +29,9 @@ public class UserServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html");
 		action = req.getServletPath();
 		super.service(req, resp);
 	}
@@ -36,14 +39,28 @@ public class UserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		switch (action) {
-		case UrlConst.CREATE_USER:
-			req.getRequestDispatcher(JspConst.CREATE_USER)
+		case UrlConst.USER_ADD:
+			req.getRequestDispatcher(JspConst.USER_ADD)
 				.forward(req, resp);
 			break;
 		case UrlConst.USER:
 			req.setAttribute("users", service.getListUsers());
 			req.getRequestDispatcher(JspConst.USER)			
 				.forward(req, resp);
+			break;
+
+		default:
+			break;
+		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		switch (action) {
+		case UrlConst.USER_ADD:
+			service.addUser(req);
+			req.setAttribute("users", service.getListUsers());
+			resp.sendRedirect(req.getContextPath() + UrlConst.USER);
 			break;
 
 		default:
